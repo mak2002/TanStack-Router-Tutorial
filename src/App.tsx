@@ -7,6 +7,9 @@ import {
   ReactRouter,
   Route,
   RootRoute,
+  Router,
+  useParams,
+  useSearch,
 } from "@tanstack/react-router";
 import { Projects } from "./Pages/Projects";
 import About from "./Pages/About";
@@ -24,9 +27,19 @@ function Root() {
         <Link to="/" className="bg-gray-400 p-4">
           Home
         </Link>
-        <Link to="/about" className="bg-gray-400 p-4">
+
+        <Link
+          to="/about"
+          className="bg-gray-400 p-4"
+          search={{
+            title: "TanStack",
+            sortBy: "name",
+            desc: true,
+          }}
+        >
           About
         </Link>
+
         <Link
           to="/projects/$projectId"
           className="bg-gray-400 p-4"
@@ -35,22 +48,6 @@ function Root() {
           }}
         >
           Projects
-        </Link>
-
-        <Link
-          to="/projects/$projectId"
-          search={{
-            pageIndex: 10,
-            includeCategories: ["JS", "TS"],
-            sortBy: "alpha",
-            desc: true,
-          }}
-          className="bg-gray-400 p-4"
-          params={{
-            projectId: "SearchParams",
-          }}
-        >
-          Search Params
         </Link>
       </div>
       <hr />
@@ -79,7 +76,7 @@ const projectsRoute = new Route({
   path: "/projects",
 });
 
-// Create a route with a dynamic parameter
+// Route with a dynamic parameter
 const projectRoute = new Route({
   getParentRoute: () => projectsRoute,
   path: "$projectId",
@@ -93,7 +90,7 @@ const routeTree = rootRoute.addChildren([
   projectsRoute.addChildren([projectRoute]),
 ]);
 
-const router = new ReactRouter({ routeTree });
+const router = new Router({ routeTree });
 
 // Register your router for maximum type safety
 declare module "@tanstack/react-router" {
