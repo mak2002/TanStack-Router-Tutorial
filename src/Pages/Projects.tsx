@@ -1,7 +1,7 @@
 import { useParams, useSearch } from "@tanstack/react-router";
 import React from "react";
 
-export function Projects() {
+export default function Projects() {
   const { projectId } = useParams();
 
   return (
