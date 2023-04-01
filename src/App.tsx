@@ -4,17 +4,13 @@ import {
   Outlet,
   RouterProvider,
   Link,
-  ReactRouter,
   Route,
   RootRoute,
   Router,
-  useParams,
   useSearch,
 } from "@tanstack/react-router";
 import Projects  from "./Pages/Projects";
-// import About from "./Pages/About";
 import { Home } from "./Pages/Home";
-import { parseSearchWith, stringifySearchWith } from '@tanstack/router'
 
 // mocking a async fetch function
 async function msleep(ms: number) {
@@ -94,7 +90,6 @@ const aboutRoute = new Route({
   component: About,
   beforeLoad: async () => {
     await msleep(2000);
-    // fetch something
     console.log("About route before load");
   },
   validateSearch: (search: Record<string, unknown>): any => {
@@ -146,6 +141,8 @@ function About() {
   Static Routes (longest to shortest)
   Dynamic Routes (longest to shortest)
   Splat/Wildcard Routes
+
+  - home
 */
 
 const routeTree = rootRoute.addChildren([

@@ -1,4 +1,4 @@
-import { useParams, useSearch } from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
 import React from "react";
 
 export default function Projects() {
