@@ -12,6 +12,9 @@ import {
 import Projects  from "./Pages/Projects";
 import { Home } from "./Pages/Home";
 
+// Link for website
+// https://tanstackroutertutorial.netlify.app/
+
 // mocking a async fetch function
 async function msleep(ms: number) {
   return new Promise((resolve) => {
